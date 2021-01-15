@@ -6,10 +6,11 @@ body {
   align-items: center;
   height: 100vh;
   overflow: auto;
+  flex-direction: column;
+  flex-wrap: wrap;
+
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 15px;
 }
