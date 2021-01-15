@@ -44,12 +44,20 @@
 
       $magazzino = new Magazzino("Cavicchioli Warehouse", "via Affari Miei 123/Z, Milano");
       $magazzino -> prodotti = array("spade", "coltelli", "pistole", "fucili");
+      $magazzino -> dipendenti = "10 adulti e 160 bambini";
+      $magazzino -> cani_da_guardia = "10000";
 
       var_dump($magazzino);
 
       echo "Nome del magazzino: " . $magazzino->name; ?> <br> <?php
-      echo "Location del magazzino: " . $magazzino->location; ?> <br> <?php
-      echo "Prodotti del magazzino: " . $magazzino->prodotti; ?> <br> <?php
+      print_r( "Location del magazzino: " . $magazzino->location); ?> <br> <?php
+      echo "Prodotti del magazzino: ";
+      print_r(array_values($magazzino->prodotti)); ?> <br> <?php
+
+
+      echo "Dipendenti del magazzino: " . $magazzino->dipendenti; ?> <br> <?php
+      echo "Cani del magazzino: " . $magazzino->cani_da_guardia; ?> <br> <?php
+
       echo "<hr>"; ?> <br> <?php
 
       // PRODOTTO -----------------------------------------------------------------------
