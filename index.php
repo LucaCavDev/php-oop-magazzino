@@ -26,115 +26,61 @@
   -->
 
   <div class="container">
-    <?php
-      // MAGAZZINO -----------------------------------------------------------------------
-      class Magazzino {
+    <h2>
+      <?php
+        class Magazine {
+          public $name;
+          public $location;
 
-        public $name;
-        public $location;
-        public $prodotti;
-
-        public function __construct($name, $location) {
-
-          $this-> name = $name;
-          $this-> location = $location;
-
+          public $products;
+          public function __construct($name, $location, $products = []) {
+            $this -> name = $name;
+            $this -> location = $location;
+            $this -> products = $products;
+          }
+          public function __toString() {
+            return 'name: ' . $this -> name . '<br>'
+              . 'location: ' . $this -> location . '<br>'
+              . 'products: ' . count($this -> products);
+          }
         }
-      }
-
-      $magazzino = new Magazzino("Cavicchioli Warehouse", "via Affari Miei 123/Z, Milano");
-      $magazzino -> prodotti = array("spade", "coltelli", "pistole", "fucili");
-      $magazzino -> dipendenti = "10 adulti e 160 bambini";
-      $magazzino -> cani_da_guardia = "10000";
-
-      var_dump($magazzino);
-
-      echo "Nome del magazzino: " . $magazzino->name; ?> <br> <?php
-      print_r( "Location del magazzino: " . $magazzino->location); ?> <br> <?php
-      echo "Prodotti del magazzino: ";
-      print_r(array_values($magazzino->prodotti)); ?> <br> <?php
-
-
-      echo "Dipendenti del magazzino: " . $magazzino->dipendenti; ?> <br> <?php
-      echo "Cani del magazzino: " . $magazzino->cani_da_guardia; ?> <br> <?php
-
-      echo "<hr>"; ?> <br> <?php
-
-      // PRODOTTO -----------------------------------------------------------------------
-
-      class Prodotto {
-
-        public $name;
-        public $weight;
-        public $price;
-
-        public function __construct($name) {
-
-          $this-> name = $name;
-
+        class Product {
+          public $name;
+          public $weight;
+          public $price;
+          public function __construct($name, $weight, $price) {
+            $this -> name = $name;
+            $this -> weight = $weight;
+            $this -> price = $price;
+          }
+          public function __toString() {
+            return 'name: ' . $this -> name . '<br>'
+              . 'weight: ' . $this -> weight . '<br>'
+              . 'price: ' . $this -> price;
+          }
         }
 
-      }
+        $prod1 = new Product('prod1', 10, 100);
+        $prod2 = new Product('prod2', 100, 200);
+        $prod3 = new Product('prod3', 20, 400);
+        $mag = new Magazine('mag1', 'via magica',
+        //   [ $prod1, $prod2, $prod3 ]
+        );
+        $mag -> products[] = new Product('prod1', 10, 100);
+        // var_dump($prod1); echo "<br>";
+        // var_dump($prod2); echo "<br>";
+        // var_dump($prod3); echo "<br>";
+        // var_dump($mag); echo "<br>";
+        $mag -> products[] = $prod2;
+        $mag -> products[] = $prod3;
 
-      $prodotto = new Prodotto("spada di fuoco");
-      $prodotto -> weight = "4 kg";
-      $prodotto -> price = "20 euri";
-
-      var_dump($prodotto);
-
-      echo "Nome del prodotto: " . $prodotto->name; ?> <br> <?php
-      echo "Peso del prodotto: " . $prodotto->weight; ?> <br> <?php
-      echo "Prezzo del prodotto: " . $prodotto->price; ?> <br> <?php
-      echo "<hr>"; ?> <br> <?php
-
-
-      //aggiungo altri prodotti
-
-      $prodotto1 = new Prodotto("coltello del malandrino");
-      $prodotto1 -> weight = "1 kg";
-      $prodotto1 -> price = "10 euri";
-      // var_dump($prodotto1);
-      echo "Nome del prodotto1: " . $prodotto1->name; ?> <br> <?php
-      echo "Peso del prodotto1: " . $prodotto1->weight; ?> <br> <?php
-      echo "Prezzo del prodotto1: " . $prodotto1->price; ?> <br> <?php
-      echo "<hr>"; ?> <br> <?php
-      //
-      $prodotto2 = new Prodotto("pistola ad acqua");
-      $prodotto2 -> weight = "2 kg";
-      $prodotto2 -> price = "50 euri";
-      // var_dump($prodotto2);
-      echo "Nome del prodotto2: " . $prodotto2->name; ?> <br> <?php
-      echo "Peso del prodotto2: " . $prodotto2->weight; ?> <br> <?php
-      echo "Prezzo del prodotto2: " . $prodotto2->price; ?> <br> <?php
-      echo "<hr>"; ?> <br> <?php
-
-      //
-      $prodotto3 = new Prodotto("fucile da pasticciere");
-      $prodotto3 -> weight = "1 kg";
-      $prodotto3 -> price = "10 euri";
-      // var_dump($prodotto3);
-      echo "Nome del prodotto3: " . $prodotto3->name; ?> <br> <?php
-      echo "Peso del prodotto3: " . $prodotto3->weight; ?> <br> <?php
-      echo "Prezzo del prodotto3: " . $prodotto3->price; ?> <br> <?php
-      echo "<hr>"; ?> <br> <?php
-
-
-
-
-      // function say3Hello() {
-      //
-      //   echo "hello world!<br>";
-      //   echo "hello world!<br>";
-      //   echo "hello world!<br>";
-      //
-      // }
-      //
-      // say3Hello();
-
-
-
-    ?>
-
+        echo  $prod1 . "<br><br>"
+            . $prod2 . "<br><br>"
+            . $prod3 . "<br><br><br><br>"
+            . $mag;
+            //si vede che mag ha 3 prodotti
+      ?>
+    </h2>
 
   </div>
 
